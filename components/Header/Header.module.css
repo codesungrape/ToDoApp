@@ -1,0 +1,60 @@
+/* src/components/Header.module.css */
+
+.header {
+    background: linear-gradient(135deg, #f7b7d8, #f0c6f1);
+    color: #4a4a4a;
+    padding: 20px 40px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    margin-bottom: 30px;
+  }
+  
+  .logo {
+    font-size: 2.5rem;
+    font-weight: 700;
+    color: #c63d6f;
+    letter-spacing: 2px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+    font-family: 'Poppins', sans-serif;
+  }
+  
+  .nav {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    margin-top: 15px;
+  }
+  
+  .navLink {
+    color: #4a4a4a;
+    text-decoration: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    padding: 8px 12px;
+    border-radius: 8px;
+  }
+  
+  .navLink:hover {
+    background-color: #c63d6f;
+    color: white;
+    transform: scale(1.1);
+  }
+  
+  .navLink:active {
+    background-color: #d66d93;
+  }
+  
+  @media (max-width: 768px) {
+    .nav {
+      flex-direction: column;
+      gap: 15px;
+    }
+  
+    .logo {
+      font-size: 2rem;
+    }
+  }
+  
