@@ -14,7 +14,12 @@ function Task({ index, task, onRemove }) {
         {isDone ? "DONE" : ""}
       </button>
       <h4 className={styles.h4}>{task}</h4>
-      <button className="remove-btn" onClick={() => onRemove(index)}>
+      <button
+        className="remove-btn"
+        onClick={() => onRemove(index)}
+        role="button"
+        aria-label="delete"
+      >
         <svg
           xmlns="http://www.w3.org/2000/svg"
           viewBox="0 0 24 24"
