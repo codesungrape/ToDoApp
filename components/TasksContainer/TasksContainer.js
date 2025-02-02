@@ -1,11 +1,20 @@
 import Task from "../Task/Task";
 
-function TasksContainer({ tasks }) {
+function TasksContainer({ tasks, setTasks }) {
+  function removeTask(index) {
+    setTasks((prevTasks) => prevTasks.filter((_, i) => i !== index)); // Keep all except the one to remove
+  }
+
   return (
     <div>
       <ul>
         {tasks.map((task, index) => (
-          <Task key={index} task={task}></Task>
+          <Task
+            key={index}
+            index={index}
+            task={task}
+            onRemove={removeTask}
+          ></Task>
         ))}
       </ul>
     </div>

@@ -12,6 +12,7 @@ function InputForm({ onSubmit }) {
           id="new-todo"
           placeholder="Enter a new task..."
           className={styles.input}
+          required
         />
         <button type="submit" className={styles.button}>
           Add

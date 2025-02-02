@@ -3,20 +3,21 @@ import InputForm from "../InputForm/InputForm";
 import TasksContainer from "../TasksContainer/TasksContainer";
 
 function MainContainer() {
-  const [task, setTask] = useState("");
-  const [addTask, setAddTask] = useState([]);
+  const [tasks, setTasks] = useState([]);
 
   function handleSubmit(event) {
     event.preventDefault();
-    const newTask = event.target[0].value; // Get the task from the input
-    setAddTask([...addTask, newTask]); // Add the new task to the list
-    setTask(""); // Clear the input
+    const newTask = event.target[0].value;
+    if (!newTask.trim()) return; // no empty Tasks
+
+    setTasks([...tasks, newTask]); // Add the new task to the list
+    event.target.reset(); // clear input
   }
 
   return (
     <div>
       <InputForm onSubmit={handleSubmit} />
-      <TasksContainer tasks={addTask} />
+      <TasksContainer tasks={tasks} setTasks={setTasks} />
     </div>
   );
 }
