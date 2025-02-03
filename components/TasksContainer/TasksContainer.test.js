@@ -1,22 +1,32 @@
-import { render, screen } from "@testing-library/react";
+import { fireEvent, render, screen } from "@testing-library/react";
 import TasksContainer from "./TasksContainer";
-import userEvent from "@testing-library/user-event";
 
 describe("TasksContainer", () => {
   test("removes a task when delete button is clicked", () => {
-    const mockSetTasks = jest.fn(); // Mock function for setTasks
+    const mockSetTasks = jest.fn();
     const tasks = ["Task 1", "Task 2", "Task 3"];
 
     render(<TasksContainer tasks={tasks} setTasks={mockSetTasks} />);
 
-    // Click the delete button of the first task
+    // Get all delete buttons
     const deleteButtons = screen.getAllByRole("button", { name: /delete/i });
-    userEvent.click(deleteButtons[0]);
 
-    // Log to check if mockSetTasks was called
-    console.log(mockSetTasks.mock.calls);
+    // Confirm buttons are found
+    expect(deleteButtons.length).toBeGreaterThan(0);
 
-    // Expect setTasks to have been called with a filtered array
-    expect(mockSetTasks).toHaveBeenCalledWith(["Task 2", "Task 3"]);
+    // Click the first delete button
+    fireEvent.click(deleteButtons[0]);
+
+    // Check that mockSetTasks was called once
+    expect(mockSetTasks).toHaveBeenCalledTimes(1);
+
+    // Extract the function passed to setTasks
+    const updateFunction = mockSetTasks.mock.calls[0][0];
+
+    // Manually invoke the function to simulate state update
+    const updatedTasks = updateFunction(tasks);
+
+    // Expect the updated task list to match the expected output
+    expect(updatedTasks).toEqual(["Task 2", "Task 3"]);
   });
 });

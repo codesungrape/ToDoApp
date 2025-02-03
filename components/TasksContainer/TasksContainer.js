@@ -2,7 +2,11 @@ import Task from "../Task/Task";
 
 function TasksContainer({ tasks, setTasks }) {
   function removeTask(index) {
-    setTasks((prevTasks) => prevTasks.filter((_, i) => i !== index)); // Keep all except the one to remove
+    setTasks((prevTasks) => {
+      const updatedTasks = prevTasks.filter((_, i) => i !== index);
+      console.log("Updated tasks after delete:", updatedTasks);
+      return updatedTasks;
+    });
   }
 
   return (
