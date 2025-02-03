@@ -3,7 +3,7 @@ import styles from "./InputForm.module.css";
 function InputForm({ onSubmit }) {
   return (
     <div className={styles.mainContainer}>
-      <form className={styles.form} onSubmit={onSubmit}>
+      <form className={styles.form} onSubmit={onSubmit} role="form">
         <label htmlFor="new-todo" className={styles.label}>
           What needs to be done?
         </label>
